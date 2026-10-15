@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)file:///C:/Users/kae10/Downloads/code_artifact.html -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>さくっと！自分家計簿</title>
+    <!-- Tailwind CSS -->
+    <script src="./さくっと！自分家計簿_files/saved_resource"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./さくっと！自分家計簿_files/all.min.css">
+    <!-- Google Fonts (Zen Maru Gothic) -->
+    <link href="./さくっと！自分家計簿_files/css2" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Zen Maru Gothic"', 'sans-serif'],
+                    },
+                    colors: {
+                        pastel: {
+                            pink: '#fde2e4',
+                            pinkDark: '#f472b6',
+                            rose: '#fff1f2',
+                            yellow: '#fef9c3',
+                            yellowDark: '#eab308',
+                            mint: '#d1fae5',
+                            mintDark: '#10b981',
+                            blue: '#e0f2fe',
+                            blueDark: '#38bdf8',
+                            purple: '#f3e8ff',
+                            purpleDark: '#c084fc',
+                            cream: '#fffdfa',
+                            peach: '#ffedd5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background-color: #faf7f2;
+            color: #4a4a4a;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .animate-bounce-slow {
+            animation: bounceSlow 2s infinite;
+        }
+        @keyframes bounceSlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .animate-pop {
+            animation: pop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes pop {
+            0% { transform: scale(0.96); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .speech-bubble {
+            position: relative;
+            background: #ffffff;
+            border-radius: 1.25rem;
+            border: 2px solid #f3d5d8;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 24px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #ffffff transparent;
+            display: block;
+            width: 0;
+        }
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -13px;
+            left: 23px;
+            border-width: 11px 11px 0;
+            border-style: solid;
+            border-color: #f3d5d8 transparent;
+            display: block;
+            width: 0;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:"Zen Maru Gothic", sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.left-3{left:0.75rem}.top-0{top:0px}.top-1\/2{top:50%}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-2{margin-top:0.5rem;margin-bottom:0.5rem}.mb-1{margin-bottom:0.25rem}.ml-1{margin-left:0.25rem}.mr-1\.5{margin-right:0.375rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-8{margin-top:2rem}.mb-0\.5{margin-bottom:0.125rem}.mb-2{margin-bottom:0.5rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-16{height:4rem}.h-20{height:5rem}.h-3\.5{height:0.875rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-9{height:2.25rem}.h-full{height:100%}.h-14{height:3.5rem}.h-2{height:0.5rem}.max-h-\[320px\]{max-height:320px}.max-h-\[380px\]{max-height:380px}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-20{width:5rem}.w-5{width:1.25rem}.w-64{width:16rem}.w-9{width:2.25rem}.w-full{width:100%}.w-3{width:0.75rem}.max-w-4xl{max-width:56rem}.max-w-sm{max-width:24rem}.max-w-\[110px\]{max-width:110px}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-7{grid-template-columns:repeat(7, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-x-1 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.25rem * var(--tw-space-x-reverse));margin-left:calc(0.25rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.375rem * var(--tw-space-x-reverse));margin-left:calc(0.375rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-0\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.125rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.rounded{border-radius:0.25rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-t{border-top-width:1px}.border-amber-100{--tw-border-opacity:1;border-color:rgb(254 243 199 / var(--tw-border-opacity, 1))}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138 / var(--tw-border-opacity, 1))}.border-amber-200\/60{border-color:rgb(253 230 138 / 0.6)}.border-amber-200\/80{border-color:rgb(253 230 138 / 0.8)}.border-amber-50{--tw-border-opacity:1;border-color:rgb(255 251 235 / var(--tw-border-opacity, 1))}.border-emerald-100{--tw-border-opacity:1;border-color:rgb(209 250 229 / var(--tw-border-opacity, 1))}.border-emerald-200{--tw-border-opacity:1;border-color:rgb(167 243 208 / var(--tw-border-opacity, 1))}.border-emerald-200\/80{border-color:rgb(167 243 208 / 0.8)}.border-emerald-50{--tw-border-opacity:1;border-color:rgb(236 253 245 / var(--tw-border-opacity, 1))}.border-pink-100{--tw-border-opacity:1;border-color:rgb(252 231 243 / var(--tw-border-opacity, 1))}.border-pink-200\/60{border-color:rgb(251 207 232 / 0.6)}.border-pink-200\/70{border-color:rgb(251 207 232 / 0.7)}.border-pink-200\/80{border-color:rgb(251 207 232 / 0.8)}.border-pink-400{--tw-border-opacity:1;border-color:rgb(244 114 182 / var(--tw-border-opacity, 1))}.border-pink-50{--tw-border-opacity:1;border-color:rgb(253 242 248 / var(--tw-border-opacity, 1))}.border-purple-100{--tw-border-opacity:1;border-color:rgb(243 232 255 / var(--tw-border-opacity, 1))}.border-purple-50{--tw-border-opacity:1;border-color:rgb(250 245 255 / var(--tw-border-opacity, 1))}.border-sky-100{--tw-border-opacity:1;border-color:rgb(224 242 254 / var(--tw-border-opacity, 1))}.border-sky-50{--tw-border-opacity:1;border-color:rgb(240 249 255 / var(--tw-border-opacity, 1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-200\/60{border-color:rgb(226 232 240 / 0.6)}.border-transparent{border-color:transparent}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.border-amber-100\/80{border-color:rgb(254 243 199 / 0.8)}.bg-amber-400{--tw-bg-opacity:1;background-color:rgb(251 191 36 / var(--tw-bg-opacity, 1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153 / var(--tw-bg-opacity, 1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245 / var(--tw-bg-opacity, 1))}.bg-pink-100{--tw-bg-opacity:1;background-color:rgb(252 231 243 / var(--tw-bg-opacity, 1))}.bg-pink-400{--tw-bg-opacity:1;background-color:rgb(244 114 182 / var(--tw-bg-opacity, 1))}.bg-pink-50{--tw-bg-opacity:1;background-color:rgb(253 242 248 / var(--tw-bg-opacity, 1))}.bg-rose-50{--tw-bg-opacity:1;background-color:rgb(255 241 242 / var(--tw-bg-opacity, 1))}.bg-sky-400{--tw-bg-opacity:1;background-color:rgb(56 189 248 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-200\/60{background-color:rgb(226 232 240 / 0.6)}.bg-slate-200\/70{background-color:rgb(226 232 240 / 0.7)}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-slate-900\/40{background-color:rgb(15 23 42 / 0.4)}.bg-transparent{background-color:transparent}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-white\/90{background-color:rgb(255 255 255 / 0.9)}.bg-amber-50\/50{background-color:rgb(255 251 235 / 0.5)}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.bg-emerald-50\/60{background-color:rgb(236 253 245 / 0.6)}.bg-pink-50\/60{background-color:rgb(253 242 248 / 0.6)}.bg-pink-50\/70{background-color:rgb(253 242 248 / 0.7)}.bg-rose-400{--tw-bg-opacity:1;background-color:rgb(251 113 133 / var(--tw-bg-opacity, 1))}.bg-slate-50\/50{background-color:rgb(248 250 252 / 0.5)}.bg-slate-50\/80{background-color:rgb(248 250 252 / 0.8)}.bg-teal-100{--tw-bg-opacity:1;background-color:rgb(204 251 241 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-amber-100{--tw-gradient-from:#fef3c7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(254 243 199 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-amber-400{--tw-gradient-from:#fbbf24 var(--tw-gradient-from-position);--tw-gradient-to:rgb(251 191 36 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-emerald-100{--tw-gradient-from:#d1fae5 var(--tw-gradient-from-position);--tw-gradient-to:rgb(209 250 229 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-emerald-300{--tw-gradient-from:#6ee7b7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(110 231 183 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-emerald-400{--tw-gradient-from:#34d399 var(--tw-gradient-from-position);--tw-gradient-to:rgb(52 211 153 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-pink-100{--tw-gradient-from:#fce7f3 var(--tw-gradient-from-position);--tw-gradient-to:rgb(252 231 243 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-pink-300{--tw-gradient-from:#f9a8d4 var(--tw-gradient-from-position);--tw-gradient-to:rgb(249 168 212 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-pink-400{--tw-gradient-from:#f472b6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(244 114 182 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-400{--tw-gradient-from:#c084fc var(--tw-gradient-from-position);--tw-gradient-to:rgb(192 132 252 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-amber-300{--tw-gradient-to:rgb(252 211 77 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #fcd34d var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-amber-50{--tw-gradient-to:rgb(255 251 235 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #fffbeb var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-orange-50{--tw-gradient-to:rgb(255 247 237 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #fff7ed var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-teal-50{--tw-gradient-to:rgb(240 253 250 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #f0fdfa var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-amber-200{--tw-gradient-to:#fde68a var(--tw-gradient-to-position)}.to-emerald-50{--tw-gradient-to:#ecfdf5 var(--tw-gradient-to-position)}.to-pink-100{--tw-gradient-to:#fce7f3 var(--tw-gradient-to-position)}.to-pink-400{--tw-gradient-to:#f472b6 var(--tw-gradient-to-position)}.to-pink-500{--tw-gradient-to:#ec4899 var(--tw-gradient-to-position)}.to-sky-100{--tw-gradient-to:#e0f2fe var(--tw-gradient-to-position)}.to-teal-500{--tw-gradient-to:#14b8a6 var(--tw-gradient-to-position)}.to-purple-400{--tw-gradient-to:#c084fc var(--tw-gradient-to-position)}.p-0\.5{padding:0.125rem}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-1{padding:0.25rem}.p-2\.5{padding:0.625rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.pb-2\.5{padding-bottom:0.625rem}.pb-3{padding-bottom:0.75rem}.pl-8{padding-left:2rem}.pr-1{padding-right:0.25rem}.pr-3{padding-right:0.75rem}.pt-1{padding-top:0.25rem}.pt-2{padding-top:0.5rem}.pt-4{padding-top:1rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[8px\]{font-size:8px}.text-\[9px\]{font-size:9px}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.leading-snug{line-height:1.375}.tracking-wide{letter-spacing:0.025em}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-amber-500{--tw-text-opacity:1;color:rgb(245 158 11 / var(--tw-text-opacity, 1))}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6 / var(--tw-text-opacity, 1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9 / var(--tw-text-opacity, 1))}.text-amber-800{--tw-text-opacity:1;color:rgb(146 64 14 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-emerald-500{--tw-text-opacity:1;color:rgb(16 185 129 / var(--tw-text-opacity, 1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105 / var(--tw-text-opacity, 1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70 / var(--tw-text-opacity, 1))}.text-pink-400{--tw-text-opacity:1;color:rgb(244 114 182 / var(--tw-text-opacity, 1))}.text-pink-500{--tw-text-opacity:1;color:rgb(236 72 153 / var(--tw-text-opacity, 1))}.text-pink-600{--tw-text-opacity:1;color:rgb(219 39 119 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-rose-400{--tw-text-opacity:1;color:rgb(251 113 133 / var(--tw-text-opacity, 1))}.text-rose-500{--tw-text-opacity:1;color:rgb(244 63 94 / var(--tw-text-opacity, 1))}.text-sky-400{--tw-text-opacity:1;color:rgb(56 189 248 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-teal-500{--tw-text-opacity:1;color:rgb(20 184 166 / var(--tw-text-opacity, 1))}.text-teal-600{--tw-text-opacity:1;color:rgb(13 148 136 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87 / var(--tw-text-opacity, 1))}.text-pink-700{--tw-text-opacity:1;color:rgb(190 24 93 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-teal-800{--tw-text-opacity:1;color:rgb(17 94 89 / var(--tw-text-opacity, 1))}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-emerald-200{--tw-shadow-color:#a7f3d0;--tw-shadow:var(--tw-shadow-colored)}.shadow-pink-200{--tw-shadow-color:#fbcfe8;--tw-shadow:var(--tw-shadow-colored)}.shadow-purple-200{--tw-shadow-color:#e9d5ff;--tw-shadow:var(--tw-shadow-colored)}.outline-none{outline:2px solid transparent;outline-offset:2px}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-500{transition-duration:500ms}.selection\:bg-pink-200 *::selection{--tw-bg-opacity:1;background-color:rgb(251 207 232 / var(--tw-bg-opacity, 1))}.selection\:bg-pink-200::selection{--tw-bg-opacity:1;background-color:rgb(251 207 232 / var(--tw-bg-opacity, 1))}.hover\:border-pink-300:hover{--tw-border-opacity:1;border-color:rgb(249 168 212 / var(--tw-border-opacity, 1))}.hover\:bg-amber-50:hover{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.hover\:bg-amber-500:hover{--tw-bg-opacity:1;background-color:rgb(245 158 11 / var(--tw-bg-opacity, 1))}.hover\:bg-pink-100:hover{--tw-bg-opacity:1;background-color:rgb(252 231 243 / var(--tw-bg-opacity, 1))}.hover\:bg-pink-100\/80:hover{background-color:rgb(252 231 243 / 0.8)}.hover\:bg-pink-50:hover{--tw-bg-opacity:1;background-color:rgb(253 242 248 / var(--tw-bg-opacity, 1))}.hover\:bg-pink-500:hover{--tw-bg-opacity:1;background-color:rgb(236 72 153 / var(--tw-bg-opacity, 1))}.hover\:bg-rose-100:hover{--tw-bg-opacity:1;background-color:rgb(255 228 230 / var(--tw-bg-opacity, 1))}.hover\:bg-sky-500:hover{--tw-bg-opacity:1;background-color:rgb(14 165 233 / var(--tw-bg-opacity, 1))}.hover\:bg-pink-50\/50:hover{background-color:rgb(253 242 248 / 0.5)}.hover\:from-emerald-500:hover{--tw-gradient-from:#10b981 var(--tw-gradient-from-position);--tw-gradient-to:rgb(16 185 129 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:from-pink-500:hover{--tw-gradient-from:#ec4899 var(--tw-gradient-from-position);--tw-gradient-to:rgb(236 72 153 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:from-purple-500:hover{--tw-gradient-from:#a855f7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(168 85 247 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-pink-500:hover{--tw-gradient-to:#ec4899 var(--tw-gradient-to-position)}.hover\:to-pink-600:hover{--tw-gradient-to:#db2777 var(--tw-gradient-to-position)}.hover\:to-teal-600:hover{--tw-gradient-to:#0d9488 var(--tw-gradient-to-position)}.hover\:to-purple-500:hover{--tw-gradient-to:#a855f7 var(--tw-gradient-to-position)}.hover\:text-pink-500:hover{--tw-text-opacity:1;color:rgb(236 72 153 / var(--tw-text-opacity, 1))}.hover\:text-pink-600:hover{--tw-text-opacity:1;color:rgb(219 39 119 / var(--tw-text-opacity, 1))}.hover\:text-slate-600:hover{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.hover\:text-rose-400:hover{--tw-text-opacity:1;color:rgb(251 113 133 / var(--tw-text-opacity, 1))}.focus\:bg-white:focus{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-amber-300:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(252 211 77 / var(--tw-ring-opacity, 1))}.focus\:ring-emerald-300:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(110 231 183 / var(--tw-ring-opacity, 1))}.focus\:ring-pink-300:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(249 168 212 / var(--tw-ring-opacity, 1))}.focus\:ring-purple-300:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(216 180 254 / var(--tw-ring-opacity, 1))}.focus\:ring-sky-300:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(125 211 252 / var(--tw-ring-opacity, 1))}.peer:checked ~ .peer-checked\:ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.peer:checked ~ .peer-checked\:ring-slate-500{--tw-ring-opacity:1;--tw-ring-color:rgb(100 116 139 / var(--tw-ring-opacity, 1))}.peer:checked ~ .peer-checked\:ring-offset-1{--tw-ring-offset-width:1px}@media (min-width: 640px){.sm\:h-24{height:6rem}.sm\:h-16{height:4rem}.sm\:w-24{width:6rem}.sm\:w-auto{width:auto}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.sm\:p-4{padding:1rem}.sm\:p-7{padding:1.75rem}.sm\:text-right{text-align:right}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}.sm\:text-\[9px\]{font-size:9px}}@media (min-width: 768px){.md\:col-span-5{grid-column:span 5 / span 5}.md\:col-span-7{grid-column:span 7 / span 7}.md\:flex{display:flex}.md\:hidden{display:none}.md\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}}</style></head>
+<body class="min-h-screen flex flex-col justify-between custom-scrollbar selection:bg-pink-200">
+
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-pink-100 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+            
+            <!-- Logo & Hamster Avatar -->
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="switchPage('page-1')">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-300 to-amber-200 flex items-center justify-center shadow-sm">
+                    <span class="text-xl">🐹</span>
+                </div>
+                <div>
+                    <h1 class="font-black text-slate-800 text-base leading-none flex items-center gap-1">
+                        さくっと！自分家計簿
+                    </h1>
+                    <p class="text-[10px] font-bold text-pink-400 mt-0.5">面倒ゼロ！自分だけのマネーノート</p>
+                </div>
+            </div>
+
+            <!-- Month Selector & Action Buttons -->
+            <div class="flex items-center space-x-2">
+                <!-- Global Month Picker -->
+                <div class="relative flex items-center bg-pink-50 hover:bg-pink-100/80 rounded-2xl px-2 py-1 transition-colors border border-pink-200/60">
+                    <i class="fa-solid fa-calendar-day text-pink-400 text-xs ml-1 mr-1.5"></i>
+                    <input type="month" id="global-month-picker" onchange="onGlobalMonthChange()" class="bg-transparent text-xs font-bold text-slate-700 outline-none cursor-pointer py-1">
+                </div>
+
+                <!-- Settings Icon -->
+                <button onclick="openModal('modal-settings')" class="w-9 h-9 rounded-2xl bg-slate-100 hover:bg-pink-100 text-slate-500 hover:text-pink-500 flex items-center justify-center transition-colors" title="設定">
+                    <i class="fa-solid fa-gear text-sm"></i>
+                </button>
+
+                <!-- Hamburger Menu Toggle -->
+                <button onclick="toggleMobileMenu()" class="w-9 h-9 rounded-2xl bg-slate-100 hover:bg-pink-100 text-slate-500 hover:text-pink-500 flex items-center justify-center md:hidden transition-colors" title="メニュー">
+                    <i class="fa-solid fa-bars text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Desktop Navigation Tabs -->
+        <nav class="hidden md:flex max-w-4xl mx-auto px-4 border-t border-pink-50 text-xs font-bold">
+            <button onclick="switchPage('page-1')" id="nav-page-1" class="flex-1 py-3 border-b-2 border-pink-400 text-pink-600 flex items-center justify-center space-x-1.5 transition-all font-bold">
+                <i class="fa-solid fa-wallet"></i>
+                <span>今月使える残高</span>
+            </button>
+            <button onclick="switchPage('page-2')" id="nav-page-2" class="flex-1 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 flex items-center justify-center space-x-1.5 transition-all font-bold">
+                <i class="fa-solid fa-piggy-bank"></i>
+                <span>給料・扶養枠</span>
+            </button>
+            <button onclick="switchPage('page-3')" id="nav-page-3" class="flex-1 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 flex items-center justify-center space-x-1.5 transition-all font-bold">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>カレンダー・予定</span>
+            </button>
+            <button onclick="switchPage('page-4')" id="nav-page-4" class="flex-1 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 flex items-center justify-center space-x-1.5 transition-all font-bold">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>買いたい物</span>
+            </button>
+            <button onclick="switchPage('page-5')" id="nav-page-5" class="flex-1 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 flex items-center justify-center space-x-1.5 transition-all font-bold">
+                <i class="fa-solid fa-star"></i>
+                <span>目標貯金額</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-drawer" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden transition-opacity" onclick="toggleMobileMenu()">
+        <div class="bg-white w-64 h-full shadow-2xl p-5 space-y-6 flex flex-col justify-between" onclick="event.stopPropagation()">
+            <div class="space-y-4">
+                <div class="flex items-center justify-between border-b border-pink-100 pb-3">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-2xl">🐹</span>
+                        <span class="font-black text-sm text-slate-800">メニュー</span>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="text-slate-400 hover:text-slate-600">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+                <div class="space-y-1 font-bold text-xs text-slate-600">
+                    <button onclick="switchPage('page-1'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-pink-50 hover:text-pink-600 flex items-center space-x-2">
+                        <i class="fa-solid fa-wallet text-pink-400"></i>
+                        <span>1. 今月使える残高</span>
+                    </button>
+                    <button onclick="switchPage('page-2'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-pink-50 hover:text-pink-600 flex items-center space-x-2">
+                        <i class="fa-solid fa-piggy-bank text-emerald-400"></i>
+                        <span>2. 給料・扶養枠</span>
+                    </button>
+                    <button onclick="switchPage('page-3'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-pink-50 hover:text-pink-600 flex items-center space-x-2">
+                        <i class="fa-solid fa-calendar-days text-sky-400"></i>
+                        <span>3. カレンダー・予定</span>
+                    </button>
+                    <button onclick="switchPage('page-4'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-pink-50 hover:text-pink-600 flex items-center space-x-2">
+                        <i class="fa-solid fa-bag-shopping text-purple-400"></i>
+                        <span>4. 買いたい物</span>
+                    </button>
+                    <button onclick="switchPage('page-5'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-pink-50 hover:text-pink-600 flex items-center space-x-2">
+                        <i class="fa-solid fa-star text-amber-400"></i>
+                        <span>5. 目標貯金額</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100">
+                <button onclick="openModal('modal-settings'); toggleMobileMenu();" class="w-full py-2 bg-slate-100 text-slate-700 rounded-xl font-bold text-xs hover:bg-pink-100 flex items-center justify-center space-x-1.5">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>全体設定</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINERS -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-6">
+
+        <!-- PAGE 1: ダッシュボード & 支出メモ -->
+        <section id="page-1" class="space-y-6 animate-pop">
+            
+            <!-- Hamster Character & Budget Card -->
+            <div class="bg-gradient-to-br from-pink-100 via-amber-50 to-emerald-50 rounded-3xl p-5 sm:p-7 border border-pink-200/80 shadow-sm relative overflow-hidden space-y-5">
+                
+                <!-- Character & Bubble Header -->
+                <div class="flex items-start space-x-3 sm:space-x-4">
+                    <!-- Hamster SVG Illustration -->
+                    <div class="relative shrink-0">
+                        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white/80 backdrop-blur-md flex items-center justify-center border border-white shadow-sm p-2 animate-bounce-slow" id="hamster-svg-container">
+                <svg width="60" height="60" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Ears -->
+                    <circle cx="12" cy="12" r="7" fill="#fca5a5"></circle>
+                    <circle cx="12" cy="12" r="4" fill="#fecdd3"></circle>
+                    <circle cx="38" cy="12" r="7" fill="#fca5a5"></circle>
+                    <circle cx="38" cy="12" r="4" fill="#fecdd3"></circle>
+
+                    <!-- Body & Head -->
+                    <ellipse cx="25" cy="28" rx="19" ry="17" fill="#fde047"></ellipse>
+                    <ellipse cx="25" cy="30" rx="14" ry="12" fill="#fffdfa"></ellipse>
+
+                    <!-- Eyes -->
+                    <circle cx="18" cy="20" r="2.5" fill="#334155"></circle>
+                    <circle cx="32" cy="20" r="2.5" fill="#334155"></circle>
+
+                    <!-- Cheeks -->
+                    <circle cx="14" cy="24" r="3.5" fill="#fca5a5" opacity="0.6"></circle>
+                    <circle cx="36" cy="24" r="3.5" fill="#fca5a5" opacity="0.6"></circle>
+
+                    <!-- Nose & Mouth -->
+                    <polygon points="25,23 23,21 27,21" fill="#f43f5e"></polygon>
+                    <path d="M 21 25 Q 25 30 29 25" stroke="#334155" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+
+                    <!-- Accessory -->
+                    <text x="34" y="38" font-size="12">🌻</text>
+                </svg>
+            </div>
+                    </div>
+
+                    <!-- Speech Bubble -->
+                    <div class="flex-grow bg-white p-3.5 sm:p-4 rounded-2xl border border-pink-200/70 shadow-sm relative">
+                        <div class="text-[11px] font-extrabold text-pink-500 uppercase tracking-wide flex items-center gap-1">
+                            <span>ハムちゃんのアドバイス</span>
+                            <span class="text-xs">🌻</span>
+                        </div>
+                        <p id="hamster-speech-text" class="text-xs sm:text-sm font-bold text-slate-700 mt-1 leading-snug">「まだまだ余裕だハム！ひまわりの種も買えちゃうかも♪（残り ¥37,300）」</p>
+                    </div>
+                </div>
+
+                <!-- Budget Overview Big Display -->
+                <div class="bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-white shadow-sm space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-pink-100 text-pink-600">
+                                    今月の設定予算
+                                </span>
+                                <button onclick="openModal('modal-settings')" class="text-slate-400 hover:text-pink-500 text-xs" title="予算を変更">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
+                            <div class="text-2xl sm:text-3xl font-black text-slate-800 mt-1">
+                                ¥<span id="disp-monthly-budget">50,000</span>
+                            </div>
+                        </div>
+
+                        <div class="text-left sm:text-right">
+                            <span class="text-xs font-bold text-slate-400">今月使える残高</span>
+                            <div class="text-3xl sm:text-4xl font-black text-pink-500" id="disp-remaining-balance">¥37,300</div>
+                        </div>
+                    </div>
+
+                    <!-- Usage Progress Bar -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-500">使った金額: <strong id="disp-total-spent" class="text-slate-800">¥12,700</strong></span>
+                            <span id="disp-spent-percentage" class="text-pink-500 font-extrabold">25% 使用</span>
+                        </div>
+                        <div class="w-full h-4 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200/60">
+                            <div id="budget-progress-bar" class="h-full bg-gradient-to-r from-emerald-300 via-amber-300 to-pink-400 rounded-full transition-all duration-500" style="width: 25%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Quick Expense Form & Expense List Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- サクッと支出を記録 (5 cols) -->
+                <div class="lg:col-span-5 bg-white p-5 rounded-3xl border border-pink-100 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-pink-50 pb-2.5">
+                        <h3 class="font-black text-sm text-slate-800 flex items-center space-x-2">
+                            <i class="fa-solid fa-bolt text-amber-400"></i>
+                            <span>サクッと支出を記録</span>
+                        </h3>
+                        <span class="text-[10px] font-bold text-slate-400">貯金連動: ¥<span id="disp-current-savings-mini">150,000</span></span>
+                    </div>
+
+                    <form onsubmit="event.preventDefault(); handleAddExpense();" class="space-y-3">
+                        <!-- 金額 -->
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 mb-1">金額 (円) <span class="text-rose-400">*</span></label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-extrabold text-sm">¥</span>
+                                <input type="number" id="input-exp-amount" required="" min="1" placeholder="1200" class="w-full pl-8 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold focus:bg-white focus:ring-2 focus:ring-pink-300 outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <!-- 内容 -->
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 mb-1">内容 (メモ)</label>
+                            <input type="text" id="input-exp-title" placeholder="例: スーパーの買い物、ランチ" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold focus:bg-white focus:ring-2 focus:ring-pink-300 outline-none transition-all">
+                        </div>
+
+                        <!-- 日付 & カテゴリー -->
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1">日付</label>
+                                <input type="date" id="input-exp-date" required="" class="w-full px-2 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1">振り分け</label>
+                                <select id="input-exp-category" class="w-full px-2 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 outline-none">
+                                    <option value="food">🍎 食品</option>
+                                    <option value="daily">🧴 日用品</option>
+                                    <option value="other" selected="">✨ その他</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 支払い方法 & 内容ごとのカラー選択 -->
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1">支払い方法</label>
+                                <select id="input-exp-payment" class="w-full px-2 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 outline-none">
+                                    <option value="paypay">📱 PayPay</option>
+                                    <option value="credit">💳 クレジット</option>
+                                    <option value="cash">💴 現金</option>
+                                    <option value="other">🌀 その他</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1">タグカラー</label>
+                                <div class="flex items-center space-x-1.5 pt-1">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="exp-color" value="#f472b6" checked="" class="peer sr-only">
+                                        <span class="w-5 h-5 rounded-full bg-pink-400 inline-block peer-checked:ring-2 peer-checked:ring-offset-1 peer-checked:ring-slate-500"></span>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="exp-color" value="#34d399" class="peer sr-only">
+                                        <span class="w-5 h-5 rounded-full bg-emerald-400 inline-block peer-checked:ring-2 peer-checked:ring-offset-1 peer-checked:ring-slate-500"></span>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="exp-color" value="#38bdf8" class="peer sr-only">
+                                        <span class="w-5 h-5 rounded-full bg-sky-400 inline-block peer-checked:ring-2 peer-checked:ring-offset-1 peer-checked:ring-slate-500"></span>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="exp-color" value="#fbbf24" class="peer sr-only">
+                                        <span class="w-5 h-5 rounded-full bg-amber-400 inline-block peer-checked:ring-2 peer-checked:ring-offset-1 peer-checked:ring-slate-500"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-black text-xs rounded-2xl shadow-md shadow-pink-200 transition-all flex items-center justify-center space-x-1.5 mt-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>支出を追加する</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- 支出メモ一覧 (7 cols) -->
+                <div class="lg:col-span-7 bg-white p-5 rounded-3xl border border-pink-100 shadow-sm flex flex-col space-y-3">
+                    <div class="flex items-center justify-between border-b border-pink-50 pb-2.5">
+                        <h3 class="font-black text-sm text-slate-800 flex items-center space-x-2">
+                            <i class="fa-solid fa-list-check text-pink-400"></i>
+                            <span>今月の支出メモ</span>
+                        </h3>
+                        <span id="disp-expense-count" class="text-xs font-bold text-slate-400 bg-pink-50 px-2.5 py-0.5 rounded-full">3件</span>
+                    </div>
+
+                    <div id="expense-list-container" class="flex-grow space-y-2 overflow-y-auto max-h-[320px] custom-scrollbar pr-1">
+                        <div class="p-3 bg-slate-50/80 hover:bg-pink-50/50 rounded-2xl border border-slate-100 flex items-center justify-between transition-colors">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-10 rounded-full" style="background-color: #38bdf8;"></div>
+                                <div>
+                                    <div class="font-bold text-xs text-slate-800 flex items-center space-x-1.5">
+                                        <span>友人とおでかけランチ</span>
+                                        <span class="text-[9px] bg-slate-200/70 text-slate-600 px-1.5 py-0.2 rounded">その他</span>
+                                    </div>
+                                    <div class="text-[10px] text-slate-400 font-bold flex items-center space-x-2 mt-0.5">
+                                        <span>2026-10-12</span>
+                                        <span>📱</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3">
+                                <span class="font-black text-sm text-slate-800">¥8,000</span>
+                                <button onclick="handleDeleteExpense('exp-3')" class="text-slate-300 hover:text-rose-400 p-1">
+                                    <i class="fa-solid fa-trash-can text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    
+                        <div class="p-3 bg-slate-50/80 hover:bg-pink-50/50 rounded-2xl border border-slate-100 flex items-center justify-between transition-colors">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-10 rounded-full" style="background-color: #34d399;"></div>
+                                <div>
+                                    <div class="font-bold text-xs text-slate-800 flex items-center space-x-1.5">
+                                        <span>シャンプー・洗剤</span>
+                                        <span class="text-[9px] bg-slate-200/70 text-slate-600 px-1.5 py-0.2 rounded">日用品</span>
+                                    </div>
+                                    <div class="text-[10px] text-slate-400 font-bold flex items-center space-x-2 mt-0.5">
+                                        <span>2026-10-05</span>
+                                        <span>💳</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3">
+                                <span class="font-black text-sm text-slate-800">¥3,200</span>
+                                <button onclick="handleDeleteExpense('exp-2')" class="text-slate-300 hover:text-rose-400 p-1">
+                                    <i class="fa-solid fa-trash-can text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    
+                        <div class="p-3 bg-slate-50/80 hover:bg-pink-50/50 rounded-2xl border border-slate-100 flex items-center justify-between transition-colors">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-10 rounded-full" style="background-color: #f472b6;"></div>
+                                <div>
+                                    <div class="font-bold text-xs text-slate-800 flex items-center space-x-1.5">
+                                        <span>食パン・牛乳・お米</span>
+                                        <span class="text-[9px] bg-slate-200/70 text-slate-600 px-1.5 py-0.2 rounded">食品</span>
+                                    </div>
+                                    <div class="text-[10px] text-slate-400 font-bold flex items-center space-x-2 mt-0.5">
+                                        <span>2026-10-02</span>
+                                        <span>📱</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3">
+                                <span class="font-black text-sm text-slate-800">¥1,500</span>
+                                <button onclick="handleDeleteExpense('exp-1')" class="text-slate-300 hover:text-rose-400 p-1">
+                                    <i class="fa-solid fa-trash-can text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 追加機能分析セクション（カテゴリ振り分け・食品最安値・支払い方法分析） -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- 1. 食品・日用品・その他 振り分け比較 -->
+                <div class="bg-white p-5 rounded-3xl border border-pink-100 shadow-sm space-y-3">
+                    <h4 class="font-black text-xs text-slate-800 flex items-center space-x-1.5">
+                        <i class="fa-solid fa-chart-pie text-pink-400"></i>
+                        <span>買った物の振り分け比較</span>
+                    </h4>
+                    <p class="text-[10px] text-slate-400 font-bold">どっちを多く買っているか一目でチェック！</p>
+                    
+                    <div id="category-comparison-box" class="space-y-2.5 pt-1">
+                <div class="bg-pink-50/60 p-2.5 rounded-xl border border-pink-100 text-center mb-2">
+                    <span class="text-[10px] text-pink-500 font-bold">今月一番買っているのは</span>
+                    <div class="text-xs font-black text-pink-600 mt-0.5">👑 その他！</div>
+                </div>
+
+                <div class="space-y-2 text-xs font-bold">
+                    <div>
+                        <div class="flex justify-between text-[11px] mb-0.5">
+                            <span class="text-slate-700">🍎 食品</span>
+                            <span class="text-slate-500">¥1,500 (12%)</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-rose-400 rounded-full" style="width: 12%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-[11px] mb-0.5">
+                            <span class="text-slate-700">🧴 日用品</span>
+                            <span class="text-slate-500">¥3,200 (25%)</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-emerald-400 rounded-full" style="width: 25%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-[11px] mb-0.5">
+                            <span class="text-slate-700">✨ その他</span>
+                            <span class="text-slate-500">¥8,000 (63%)</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-sky-400 rounded-full" style="width: 63%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+
+                <!-- 2. 食品の月別最安値計算機能 -->
+                <div class="bg-white p-5 rounded-3xl border border-pink-100 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-black text-xs text-slate-800 flex items-center space-x-1.5">
+                            <i class="fa-solid fa-wheat-awn text-amber-400"></i>
+                            <span>食品の最安値比較 (上位3つ)</span>
+                        </h4>
+                    </div>
+                    <p class="text-[10px] text-slate-400 font-bold">これまで買った同じ食品の最安月を公開！</p>
+
+                    <div id="lowest-food-price-box" class="space-y-2 pt-1">
+                <div class="p-2.5 bg-amber-50/50 rounded-xl border border-amber-100/80 flex items-center justify-between">
+                    <div>
+                        <div class="font-extrabold text-xs text-slate-800 flex items-center space-x-1">
+                            <span class="text-amber-500 font-black">#1</span>
+                            <span class="truncate max-w-[110px]">食パン・牛乳・お米</span>
+                        </div>
+                        <div class="text-[9px] text-amber-700 font-bold">最安月: 2026-10</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs font-black text-amber-800">¥1,500</div>
+                        <div class="text-[9px] text-slate-400">で一番安く買えた！</div>
+                    </div>
+                </div>
+            </div>
+                </div>
+
+                <!-- 3. 支払い方法（決済手段）比率 -->
+                <div class="bg-white p-5 rounded-3xl border border-pink-100 shadow-sm space-y-3">
+                    <h4 class="font-black text-xs text-slate-800 flex items-center space-x-1.5">
+                        <i class="fa-solid fa-credit-card text-sky-400"></i>
+                        <span>支払い方法の割合</span>
+                    </h4>
+                    <p class="text-[10px] text-slate-400 font-bold">どの支払い方が多かったかを集計！</p>
+
+                    <div id="payment-method-box" class="space-y-2 pt-1">
+                <div class="space-y-2 text-xs font-bold">
+                    <div class="flex items-center justify-between bg-slate-50 p-2 rounded-xl">
+                        <span class="flex items-center space-x-1">
+                            <span>📱</span>
+                            <span class="text-slate-700">PayPay</span>
+                        </span>
+                        <span class="font-black text-slate-800">¥9,500 (75%)</span>
+                    </div>
+
+                    <div class="flex items-center justify-between bg-slate-50 p-2 rounded-xl">
+                        <span class="flex items-center space-x-1">
+                            <span>💳</span>
+                            <span class="text-slate-700">クレジット</span>
+                        </span>
+                        <span class="font-black text-slate-800">¥3,200 (25%)</span>
+                    </div>
+
+                    <div class="flex items-center justify-between bg-slate-50 p-2 rounded-xl">
+                        <span class="flex items-center space-x-1">
+                            <span>💴</span>
+                            <span class="text-slate-700">現金</span>
+                        </span>
+                        <span class="font-black text-slate-800">¥0 (0%)</span>
+                    </div>
+                </div>
+            </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- PAGE 2: 給料 & 扶養枠 -->
+        <section id="page-2" class="space-y-6 animate-pop hidden">
+            
+            <!-- Dependent Banner Card -->
+            <div class="bg-gradient-to-br from-emerald-100 via-teal-50 to-sky-100 rounded-3xl p-6 border border-emerald-200/80 shadow-sm relative overflow-hidden space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <span class="inline-flex items-center space-x-1 bg-white/80 px-3 py-1 rounded-full text-xs font-black text-emerald-600 border border-emerald-200">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>今年の扶養枠チェック (<span id="disp-salary-year-label">2026年</span>)</span>
+                        </span>
+                        <div class="mt-3">
+                            <div class="text-xs text-slate-500 font-bold">扶養上限まで</div>
+                            <div class="text-3xl sm:text-4xl font-black text-slate-800" id="disp-dependent-remaining">あと ¥1,130,000</div>
+                        </div>
+                    </div>
+
+                    <!-- Dependent Config Selector -->
+                    <div class="bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-white shadow-sm space-y-1 w-full sm:w-auto">
+                        <div class="text-[11px] text-slate-400 font-bold">設定中の扶養上限額</div>
+                        <div class="flex items-center space-x-2">
+                            <select id="select-dependent-limit" onchange="updateDependentLimitSetting()" class="bg-emerald-50 text-emerald-800 font-black text-xs px-3 py-1.5 rounded-xl border border-emerald-200 outline-none cursor-pointer">
+                                <option value="1030000">103万円の壁 (所得税)</option>
+                                <option value="1300000" selected="">130万円の壁 (社会保険)</option>
+                                <option value="1500000">150万円の壁 (配偶者特別控除)</option>
+                                <option value="custom">カスタム額を入力</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Progress & Stats -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                    <div class="bg-white/80 p-3 rounded-2xl border border-emerald-100">
+                        <div class="text-[10px] text-slate-400 font-bold">今年稼いだ合計</div>
+                        <div id="disp-salary-earned-total" class="text-lg font-black text-slate-800">¥170,000</div>
+                    </div>
+                    <div class="bg-white/80 p-3 rounded-2xl border border-emerald-100">
+                        <div class="text-[10px] text-slate-400 font-bold">残り月あたり稼げる平均</div>
+                        <div id="disp-salary-monthly-allowance" class="text-lg font-black text-emerald-600">¥376,666/月</div>
+                    </div>
+                    <div class="bg-white/80 p-3 rounded-2xl border border-emerald-100">
+                        <div class="text-[10px] text-slate-400 font-bold">上限到達率</div>
+                        <div id="disp-salary-percentage" class="text-lg font-black text-teal-600">13%</div>
+                    </div>
+                </div>
+
+                <!-- Dependent Progress Bar -->
+                <div class="space-y-1">
+                    <div class="w-full h-3.5 bg-slate-200/70 rounded-full overflow-hidden p-0.5">
+                        <div id="salary-progress-bar" class="h-full bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full transition-all duration-500" style="width: 13%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salary Record Entry & List Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <!-- 给料追加フォーム (5 cols) -->
+                <div class="md:col-span-5 bg-white p-5 rounded-3xl border border-emerald-100 shadow-sm space-y-4">
+                    <h3 class="font-black text-sm text-slate-800 flex items-center space-x-2">
+                        <i class="fa-solid fa-coins text-emerald-500"></i>
+                        <span>給料の記録を追加</span>
+                    </h3>
+
+                    <form onsubmit="event.preventDefault(); handleAddSalary();" class="space-y-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 mb-1">対象月</label>
+                            <input type="month" id="input-salary-month" required="" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 mb-1">給料額 (手取り/円) <span class="text-rose-400">*</span></label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-extrabold text-sm">¥</span>
+                                <input type="number" id="input-salary-amount" required="" min="0" placeholder="85000" class="w-full pl-8 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold focus:bg-white focus:ring-2 focus:ring-emerald-300 outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 mb-1">バイト先・メモ</label>
+                            <input type="text" id="input-salary-workplace" placeholder="例: カフェバイト、家庭教師" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold focus:bg-white focus:ring-2 focus:ring-emerald-300 outline-none">
+                        </div>
+
+                        <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-white font-black text-xs rounded-2xl shadow-md shadow-emerald-200 transition-all flex items-center justify-center space-x-1.5">
+                            <i class="fa-solid fa-check"></i>
+                            <span>給料を保存する</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- 今年の給料記録一覧 (7 cols) -->
+                <div class="md:col-span-7 bg-white p-5 rounded-3xl border border-emerald-100 shadow-sm flex flex-col space-y-3">
+                    <div class="flex items-center justify-between border-b border-emerald-50 pb-2.5">
+                        <h3 class="font-black text-sm text-slate-800 flex items-center space-x-2">
+                            <i class="fa-solid fa-receipt text-teal-500"></i>
+                            <span>今年の給料記録一覧</span>
+                        </h3>
+                        <span id="disp-salary-count" class="text-xs font-bold text-slate-400 bg-emerald-50 px-2.5 py-0.5 rounded-full">2件</span>
+                    </div>
+
+                    <div id="salary-list-container" class="flex-grow space-y-2 overflow-y-auto max-h-[320px] custom-scrollbar pr-1">
+                    <div class="p-3 bg-emerald-50/60 rounded-2xl border border-emerald-100 flex items-center justify-between">
+                        <div>
+                            <div class="font-extrabold text-xs text-slate-800">2026-02分 - カフェバイト</div>
+                            <div class="text-[10px] text-emerald-600 font-bold">手取り額</div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="font-black text-sm text-emerald-700">¥88,000</span>
+                            <button onclick="handleDeleteSalary('sal-2')" class="text-slate-300 hover:text-rose-400 p-1">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="p-3 bg-emerald-50/60 rounded-2xl border border-emerald-100 flex items-center justify-between">
+                        <div>
+                            <div class="font-extrabold text-xs text-slate-800">2026-01分 - カフェバイト</div>
+                            <div class="text-[10px] text-emerald-600 font-bold">手取り額</div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="font-black text-sm text-emerald-700">¥82,000</span>
+                            <button onclick="handleDeleteSalary('sal-1')" class="text-slate-300 hover:text-rose-400 p-1">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- PAGE 3: カレンダー・予定ノート -->
+        <section id="page-3" class="space-y-6 animate-pop hidden">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Main Calendar View (7 cols) -->
+                <div class="lg:col-span-7 bg-white p-5 rounded-3xl border border-sky-100 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-black text-sm text-slate-800 flex items-center space-x-2">
+                            <i class="fa-solid fa-calendar-days text-sky-400"></i>
+                            <span id="disp-calendar-title">2026年 10月</span>
+                        </h3>
+                        <span class="text-[10px] font-bold text-slate-400">日付をタップして支出追加！</span>
+                    </div>
+
+                    <!-- Calendar Days Grid Header -->
+                    <div class="grid grid-cols-7 gap-1 text-center font-black text-[11px]">
+                        <div class="py-1 text-rose-400">日</div>
+                        <div class="py-1 text-slate-500">月</div>
+                        <div class="py-1 text-slate-500">火</div>
+                        <div class="py-1 text-slate-500">水</div>
+                        <div class="py-1 text-slate-500">木</div>
+                        <div class="py-1 text-slate-500">金</div>
+                        <div class="py-1 text-sky-400">土</div>
+                    </div>
+
+                    <!-- Dynamic Calendar Grid -->
+                    <div id="calendar-days-grid" class="grid grid-cols-7 gap-1"><div class="h-14 sm:h-16 bg-slate-50/50 rounded-2xl"></div><div class="h-14 sm:h-16 bg-slate-50/50 rounded-2xl"></div><div class="h-14 sm:h-16 bg-slate-50/50 rounded-2xl"></div><div class="h-14 sm:h-16 bg-slate-50/50 rounded-2xl"></div>
+                    <div onclick="selectCalendarDate('2026-10-01')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">1</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-02')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">2</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            <div class="text-[8px] sm:text-[9px] bg-teal-100 text-teal-800 px-1 rounded font-extrabold">¥1,500</div>
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-03')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">3</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-04')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">4</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-05')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">5</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            <div class="text-[8px] sm:text-[9px] bg-teal-100 text-teal-800 px-1 rounded font-extrabold">¥3,200</div>
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-06')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">6</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-07')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">7</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-08')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">8</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-09')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">9</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-10')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">10</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-11')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">11</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-12')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">12</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            <div class="text-[8px] sm:text-[9px] bg-teal-100 text-teal-800 px-1 rounded font-extrabold">¥8,000</div>
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-13')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">13</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-14')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">14</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-15')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">15</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            <div class="text-[8px] sm:text-[9px] bg-pink-100 text-pink-700 px-1 rounded font-bold truncate">友人の誕生日🎂</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-16')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">16</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-17')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">17</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-18')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">18</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-19')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">19</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-20')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">20</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-21')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">21</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-22')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">22</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-23')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">23</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-24')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">24</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-25')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">25</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-26')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">26</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            <div class="text-[8px] sm:text-[9px] bg-pink-100 text-pink-700 px-1 rounded font-bold truncate">温泉日帰り旅♨️</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-27')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">27</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-28')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">28</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-29')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">29</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-30')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">30</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                
+                    <div onclick="selectCalendarDate('2026-10-31')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">31</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Event Sidebar (5 cols) -->
+                <div class="lg:col-span-5 bg-white p-5 rounded-3xl border border-sky-100 shadow-sm space-y-4 flex flex-col">
+                    <div class="flex items-center justify-between border-b border-sky-50 pb-2.5">
+                        <h3 class="font-black text-sm text-slate-800 flex items-center space-x-2">
+                            <i class="fa-solid fa-cake-candles text-pink-400"></i>
+                            <span>誕生日・出費イベント予定</span>
+                        </h3>
+                        <button onclick="openModal('modal-add-event')" class="px-2.5 py-1 bg-pink-50 hover:bg-pink-100 text-pink-500 rounded-xl font-bold text-xs flex items-center space-x-1 transition-colors">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>予定追加</span>
+                        </button>
+                    </div>
+
+                    <div id="event-list-container" class="flex-grow space-y-2 overflow-y-auto max-h-[380px] custom-scrollbar pr-1">
+                    <div class="p-3 bg-pink-50/70 rounded-2xl border border-pink-100 space-y-1">
+                        <div class="flex items-center justify-between">
+                            <span class="font-black text-xs text-slate-800">友人の誕生日🎂</span>
+                            <button onclick="handleDeleteEvent('evt-1')" class="text-slate-300 hover:text-rose-400">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] text-pink-600 font-bold">
+                            <span>📅 2026-10-15</span>
+                            <span>予想支出: ¥5,000</span>
+                        </div>
+                    </div>
+                
+                    <div class="p-3 bg-pink-50/70 rounded-2xl border border-pink-100 space-y-1">
+                        <div class="flex items-center justify-between">
+                            <span class="font-black text-xs text-slate-800">温泉日帰り旅♨️</span>
+                            <button onclick="handleDeleteEvent('evt-2')" class="text-slate-300 hover:text-rose-400">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] text-pink-600 font-bold">
+                            <span>📅 2026-10-26</span>
+                            <span>予想支出: ¥12,000</span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- PAGE 4: 買いたい物 & 買えるかチェック -->
+        <section id="page-4" class="space-y-6 animate-pop hidden">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <!-- 買いたい物追加 (5 cols) -->
+                <div class="md:col-span-5 bg-white p-5 rounded-3xl border border-purple-100 shadow-sm space-y-4">
+                    <h3 class="font-black text-sm text-slate-800 flex items-center space-x-2">
+                        <i class="fa-solid fa-heart text-purple-400"></i>
+                        <span>欲しいものを追加</span>
+                    </h3>
+
+                    <form onsubmit="event.preventDefault(); handleAddWishItem();" class="space-y-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 mb-1">欲しいもの名 <span class="text-rose-400">*</span></label>
+                            <input type="text" id="input-wish-name" required="" placeholder="例: かわいいスニーカー、コスメ" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold focus:bg-white focus:ring-2 focus:ring-purple-300 outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 mb-1">推定予算 (円) <span class="text-rose-400">*</span></label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-extrabold text-sm">¥</span>
+                                <input type="number" id="input-wish-price" required="" min="1" placeholder="8500" class="w-full pl-8 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold focus:bg-white focus:ring-2 focus:ring-purple-300 outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 mb-1">優先度</label>
+                            <select id="input-wish-priority" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 outline-none">
+                                <option value="must">🔥 必ず買う (優先度：高)</option>
+                                <option value="if_possible" selected="">✨ 余裕があれば買う (優先度：中)</option>
+                                <option value="someday">💭 そのうちほしい (優先度：低)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500 text-white font-black text-xs rounded-2xl shadow-md shadow-purple-200 transition-all flex items-center justify-center space-x-1.5">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>欲しいものリストに追加</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- 欲しいもの今月買えるかチェックリスト (7 cols) -->
+                <div class="md:col-span-7 bg-white p-5 rounded-3xl border border-purple-100 shadow-sm flex flex-col space-y-3">
+                    <div class="flex items-center justify-between border-b border-purple-50 pb-2.5">
+                        <h3 class="font-black text-sm text-slate-800 flex items-center space-x-2">
+                            <i class="fa-solid fa-circle-check text-purple-400"></i>
+                            <span>今月買えるか診断リスト</span>
+                        </h3>
+                        <span class="text-[10px] font-bold text-slate-400">今月残高: ¥<span id="disp-wishlist-balance">37,300</span></span>
+                    </div>
+
+                    <div id="wishlist-container" class="flex-grow space-y-3 overflow-y-auto max-h-[380px] custom-scrollbar pr-1">
+                    <div class="p-4 bg-slate-50/80 rounded-2xl border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-2">
+                                <span class="font-extrabold text-sm text-slate-800">春色ワイヤレスイヤホン</span>
+                                <span class="bg-emerald-100 text-emerald-700 text-[10px] font-black px-2 py-0.5 rounded-full">✨ 今月買える！</span>
+                            </div>
+                            <div class="text-xs text-slate-400 font-bold">
+                                優先度: 🔥 必ず買う | 価格: <span class="text-slate-800 font-black">¥9,800</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-2 justify-end">
+                            <button onclick="handleBuyWishItem('wish-1')" class="px-3 py-1.5 bg-gradient-to-r from-pink-400 to-purple-400 hover:from-pink-500 hover:to-purple-500 text-white font-black text-xs rounded-xl shadow-sm transition-all flex items-center space-x-1">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span>買った！</span>
+                            </button>
+                            <button onclick="handleDeleteWishItem('wish-1')" class="text-slate-300 hover:text-rose-400 p-1">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="p-4 bg-slate-50/80 rounded-2xl border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-2">
+                                <span class="font-extrabold text-sm text-slate-800">パステル調マグカップ</span>
+                                <span class="bg-emerald-100 text-emerald-700 text-[10px] font-black px-2 py-0.5 rounded-full">✨ 今月買える！</span>
+                            </div>
+                            <div class="text-xs text-slate-400 font-bold">
+                                優先度: ✨ 余裕があれば | 価格: <span class="text-slate-800 font-black">¥2,400</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-2 justify-end">
+                            <button onclick="handleBuyWishItem('wish-2')" class="px-3 py-1.5 bg-gradient-to-r from-pink-400 to-purple-400 hover:from-pink-500 hover:to-purple-500 text-white font-black text-xs rounded-xl shadow-sm transition-all flex items-center space-x-1">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span>買った！</span>
+                            </button>
+                            <button onclick="handleDeleteWishItem('wish-2')" class="text-slate-300 hover:text-rose-400 p-1">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- PAGE 5: 目標貯金額まであと〜円 -->
+        <section id="page-5" class="space-y-6 animate-pop hidden">
+            
+            <!-- Goal Main Card -->
+            <div class="bg-gradient-to-br from-amber-100 via-orange-50 to-pink-100 rounded-3xl p-6 border border-amber-200/80 shadow-sm relative overflow-hidden space-y-5">
+                
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <span class="inline-flex items-center space-x-1 bg-white/80 px-3 py-1 rounded-full text-xs font-black text-amber-600 border border-amber-200">
+                            <i class="fa-solid fa-bullseye"></i>
+                            <span>直近で最も叶えたい目標</span>
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-black text-slate-800 mt-2" id="disp-goal-title">沖縄旅行に行く！✈️</h2>
+                    </div>
+
+                    <button onclick="openModal('modal-edit-goal')" class="px-3 py-1.5 bg-white text-slate-700 hover:bg-amber-50 rounded-xl font-extrabold text-xs shadow-sm border border-amber-200 flex items-center space-x-1 transition-colors">
+                        <i class="fa-solid fa-pen"></i>
+                        <span>目標を変更・編集</span>
+                    </button>
+                </div>
+
+                <!-- Goal Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div class="bg-white/90 p-4 rounded-2xl border border-white shadow-sm">
+                        <div class="text-[10px] text-slate-400 font-bold">目標貯金額</div>
+                        <div class="text-xl font-black text-slate-800 mt-0.5" id="disp-goal-target-amount">¥100,000</div>
+                    </div>
+
+                    <div class="bg-white/90 p-4 rounded-2xl border border-white shadow-sm">
+                        <div class="text-[10px] text-slate-400 font-bold">現在の貯蓄累積</div>
+                        <div class="text-xl font-black text-amber-500 mt-0.5" id="disp-goal-current-saved">¥40,000</div>
+                    </div>
+
+                    <div class="bg-white/90 p-4 rounded-2xl border border-white shadow-sm">
+                        <div class="text-[10px] text-slate-400 font-bold">あといくら貯めれば良い？</div>
+                        <div class="text-xl font-black text-pink-500 mt-0.5" id="disp-goal-remaining-amount">あと ¥60,000</div>
+                    </div>
+                </div>
+
+                <!-- Monthly Required Simulation -->
+                <div class="bg-white/80 backdrop-blur-md p-4 rounded-2xl border border-amber-100 flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-2xl">🐹</span>
+                        <div>
+                            <div class="text-xs font-black text-slate-800">目標達成シミュレーション</div>
+                            <div class="text-[11px] text-slate-500 font-bold">
+                                達成希望月: <span id="disp-goal-target-month" class="text-slate-800 font-black">2027年3月</span> 
+                                (<span id="disp-goal-months-left">5</span>ヶ月後)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 px-4 py-2 rounded-xl text-center sm:text-right border border-amber-200/60 w-full sm:w-auto">
+                        <div class="text-[10px] text-amber-700 font-bold">月々いくら貯めれば良い？</div>
+                        <div class="text-lg font-black text-amber-800" id="disp-goal-monthly-needed">月々 約 ¥12,000</div>
+                    </div>
+                </div>
+
+                <!-- Goal Progress Bar -->
+                <div class="space-y-1">
+                    <div class="flex justify-between text-xs font-bold text-slate-600">
+                        <span>進捗度</span>
+                        <span id="disp-goal-progress-percent" class="text-amber-600 font-black">40% 達成</span>
+                    </div>
+                    <div class="w-full h-4 bg-slate-200/60 rounded-full overflow-hidden p-0.5">
+                        <div id="goal-progress-bar" class="h-full bg-gradient-to-r from-amber-400 to-pink-400 rounded-full transition-all duration-500" style="width: 40%"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-pink-100 py-4 mt-8">
+        <div class="max-w-4xl mx-auto px-4 text-center text-xs font-bold text-slate-400">
+            さくっと！自分家計簿 © 2026 - 面倒ゼロで楽しくお金管理♪
+        </div>
+    </footer>
+
+    <!-- MODALS SECTION -->
+
+    <!-- 1. 全体設定モーダル -->
+    <div id="modal-settings" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-xl max-w-sm w-full p-6 space-y-4 animate-pop border border-pink-100">
+            <div class="flex items-center justify-between border-b border-pink-50 pb-3">
+                <h3 class="font-black text-base text-slate-800 flex items-center space-x-2">
+                    <i class="fa-solid fa-sliders text-pink-400"></i>
+                    <span>設定</span>
+                </h3>
+                <button onclick="closeModal('modal-settings')" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">今月の設定予算 (円)</label>
+                    <input type="number" id="setting-monthly-budget" min="1000" step="1000" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-pink-300">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">現在の貯金残高 (円)</label>
+                    <input type="number" id="setting-savings-balance" min="0" step="1000" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-pink-300">
+                </div>
+
+                <hr class="border-slate-100 my-2">
+
+                <button onclick="resetAllData()" class="w-full py-2 bg-rose-50 text-rose-500 hover:bg-rose-100 rounded-xl font-bold text-xs transition-colors flex items-center justify-center space-x-1">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <span>全データを初期化する</span>
+                </button>
+            </div>
+
+            <div class="flex justify-end space-x-2 pt-2">
+                <button onclick="closeModal('modal-settings')" class="px-4 py-2 text-xs font-bold text-slate-500 bg-slate-100 rounded-xl">キャンセル</button>
+                <button onclick="saveSettingsModal()" class="px-5 py-2 text-xs font-bold text-white bg-pink-400 hover:bg-pink-500 rounded-xl shadow-md">保存する</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. イベント予定追加モーダル -->
+    <div id="modal-add-event" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-xl max-w-sm w-full p-6 space-y-4 animate-pop border border-sky-100">
+            <div class="flex items-center justify-between border-b border-sky-50 pb-3">
+                <h3 class="font-black text-base text-slate-800 flex items-center space-x-2">
+                    <i class="fa-solid fa-cake-candles text-pink-400"></i>
+                    <span>出費イベント・誕生日の登録</span>
+                </h3>
+                <button onclick="closeModal('modal-add-event')" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <form onsubmit="event.preventDefault(); handleAddEvent();" class="space-y-3">
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-500 mb-1">イベント内容 <span class="text-rose-400">*</span></label>
+                    <input type="text" id="input-event-title" required="" placeholder="例: ○○ちゃんの誕生日🎂、日帰り旅行" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-sky-300">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-500 mb-1">日付 <span class="text-rose-400">*</span></label>
+                    <input type="date" id="input-event-date" required="" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-500 mb-1">予想出費金額 (任意)</label>
+                    <input type="number" id="input-event-budget" min="0" placeholder="5000" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-sky-300">
+                </div>
+
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button type="button" onclick="closeModal('modal-add-event')" class="px-4 py-2 text-xs font-bold text-slate-500 bg-slate-100 rounded-xl">キャンセル</button>
+                    <button type="submit" class="px-5 py-2 text-xs font-bold text-white bg-sky-400 hover:bg-sky-500 rounded-xl shadow-md">登録する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. 目標編集モーダル -->
+    <div id="modal-edit-goal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-xl max-w-sm w-full p-6 space-y-4 animate-pop border border-amber-100">
+            <div class="flex items-center justify-between border-b border-amber-50 pb-3">
+                <h3 class="font-black text-base text-slate-800 flex items-center space-x-2">
+                    <i class="fa-solid fa-bullseye text-amber-500"></i>
+                    <span>貯金目標の設定</span>
+                </h3>
+                <button onclick="closeModal('modal-edit-goal')" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <form onsubmit="event.preventDefault(); handleSaveGoal();" class="space-y-3">
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-500 mb-1">叶えたいこと (欲しいもの/行きたい場所)</label>
+                    <input type="text" id="input-goal-title" required="" placeholder="例: 沖縄旅行、最新PCの購入" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-amber-300">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-500 mb-1">目標金額 (円)</label>
+                    <input type="number" id="input-goal-target" required="" min="1000" step="1000" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-amber-300">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-500 mb-1">現在の貯金累積 (円)</label>
+                    <input type="number" id="input-goal-saved" required="" min="0" step="1000" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-amber-300">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-500 mb-1">目標達成予定月</label>
+                    <input type="month" id="input-goal-month" required="" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 outline-none">
+                </div>
+
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button type="button" onclick="closeModal('modal-edit-goal')" class="px-4 py-2 text-xs font-bold text-slate-500 bg-slate-100 rounded-xl">キャンセル</button>
+                    <button type="submit" class="px-5 py-2 text-xs font-bold text-white bg-amber-400 hover:bg-amber-500 rounded-xl shadow-md">目標を保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        // State Management Structure
+        let state = {
+            currentMonth: new Date().toISOString().slice(0, 7), // YYYY-MM
+            currentPage: 'page-1',
+            monthlyBudget: 50000,
+            savingsBalance: 150000,
+            dependentLimit: 1300000,
+            expenses: [],
+            salaries: [],
+            events: [],
+            wishlist: [],
+            goal: {
+                title: "沖縄旅行に行く！✈️",
+                targetAmount: 100000,
+                currentSaved: 40000,
+                targetMonth: `${new Date().getFullYear() + 1}-03`
+            }
+        };
+
+        // Initial Mock Sample Data
+        const INITIAL_SAMPLE_DATA = {
+            monthlyBudget: 50000,
+            savingsBalance: 150000,
+            dependentLimit: 1300000,
+            expenses: [
+                { id: 'exp-1', amount: 1500, title: '食パン・牛乳・お米', date: `${new Date().toISOString().slice(0, 7)}-02`, category: 'food', paymentMethod: 'paypay', color: '#f472b6' },
+                { id: 'exp-2', amount: 3200, title: 'シャンプー・洗剤', date: `${new Date().toISOString().slice(0, 7)}-05`, category: 'daily', paymentMethod: 'credit', color: '#34d399' },
+                { id: 'exp-3', amount: 8000, title: '友人とおでかけランチ', date: `${new Date().toISOString().slice(0, 7)}-12`, category: 'other', paymentMethod: 'paypay', color: '#38bdf8' }
+            ],
+            salaries: [
+                { id: 'sal-1', month: `${new Date().getFullYear()}-01`, amount: 82000, workplace: 'カフェバイト' },
+                { id: 'sal-2', month: `${new Date().getFullYear()}-02`, amount: 88000, workplace: 'カフェバイト' }
+            ],
+            events: [
+                { id: 'evt-1', title: '友人の誕生日🎂', date: `${new Date().toISOString().slice(0, 7)}-15`, budget: 5000 },
+                { id: 'evt-2', title: '温泉日帰り旅♨️', date: `${new Date().toISOString().slice(0, 7)}-26`, budget: 12000 }
+            ],
+            wishlist: [
+                { id: 'wish-1', name: '春色ワイヤレスイヤホン', price: 9800, priority: 'must' },
+                { id: 'wish-2', name: 'パステル調マグカップ', price: 2400, priority: 'if_possible' }
+            ],
+            goal: {
+                title: "沖縄旅行に行く！✈️",
+                targetAmount: 100000,
+                currentSaved: 40000,
+                targetMonth: `${new Date().getFullYear() + 1}-03`
+            }
+        };
+
+        // Window Onload Initialization
+        window.onload = function() {
+            loadStateFromStorage();
+            initDatePickers();
+            renderAll();
+        };
+
+        function loadStateFromStorage() {
+            const saved = localStorage.getItem('sakutto_kakeibo_data');
+            if (saved) {
+                try {
+                    state = { ...state, ...JSON.parse(saved) };
+                } catch(e) {
+                    state = { ...state, ...INITIAL_SAMPLE_DATA };
+                }
+            } else {
+                state = { ...state, ...INITIAL_SAMPLE_DATA };
+                saveStateToStorage();
+            }
+        }
+
+        function saveStateToStorage() {
+            localStorage.setItem('sakutto_kakeibo_data', JSON.stringify(state));
+        }
+
+        function initDatePickers() {
+            document.getElementById('global-month-picker').value = state.currentMonth;
+            document.getElementById('input-exp-date').value = new Date().toISOString().slice(0, 10);
+            document.getElementById('input-salary-month').value = state.currentMonth;
+            document.getElementById('input-event-date').value = `${state.currentMonth}-15`;
+            document.getElementById('select-dependent-limit').value = state.dependentLimit.toString();
+        }
+
+        function onGlobalMonthChange() {
+            state.currentMonth = document.getElementById('global-month-picker').value;
+            saveStateToStorage();
+            renderAll();
+        }
+
+        function switchPage(pageId) {
+            state.currentPage = pageId;
+            const pages = ['page-1', 'page-2', 'page-3', 'page-4', 'page-5'];
+            
+            pages.forEach(p => {
+                const sec = document.getElementById(p);
+                const navBtn = document.getElementById(`nav-${p}`);
+                if (p === pageId) {
+                    sec.classList.remove('hidden');
+                    if (navBtn) {
+                        navBtn.className = "flex-1 py-3 border-b-2 border-pink-400 text-pink-600 flex items-center justify-center space-x-1.5 transition-all font-bold";
+                    }
+                } else {
+                    sec.classList.add('hidden');
+                    if (navBtn) {
+                        navBtn.className = "flex-1 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 flex items-center justify-center space-x-1.5 transition-all font-bold";
+                    }
+                }
+            });
+
+            renderAll();
+        }
+
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function openModal(id) {
+            if (id === 'modal-settings') {
+                document.getElementById('setting-monthly-budget').value = state.monthlyBudget;
+                document.getElementById('setting-savings-balance').value = state.savingsBalance;
+            } else if (id === 'modal-edit-goal') {
+                document.getElementById('input-goal-title').value = state.goal.title;
+                document.getElementById('input-goal-target').value = state.goal.targetAmount;
+                document.getElementById('input-goal-saved').value = state.goal.currentSaved;
+                document.getElementById('input-goal-month').value = state.goal.targetMonth;
+            }
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        function renderAll() {
+            renderDashboardPage();
+            renderSalaryPage();
+            renderCalendarPage();
+            renderWishlistPage();
+            renderGoalPage();
+        }
+
+        // Dynamic Hamster SVG Renderer according to spend percentage
+        function getHamsterSVG(percent) {
+            let cheeks = '#fca5a5';
+            let mouthPath = "M 22 26 Q 25 29 28 26";
+            let eyeLeft = `<circle cx="18" cy="20" r="2.5" fill="#334155"/>`;
+            let eyeRight = `<circle cx="32" cy="20" r="2.5" fill="#334155"/>`;
+            let accessory = `<text x="34" y="38" font-size="12">🌻</text>`;
+
+            if (percent > 100) {
+                // Warning Overbudget - Crying/Sweating
+                mouthPath = "M 21 28 Q 25 24 29 28";
+                eyeLeft = `<path d="M 16 20 L 20 20" stroke="#334155" stroke-width="2" stroke-linecap="round"/>`;
+                eyeRight = `<path d="M 30 20 L 34 20" stroke="#334155" stroke-width="2" stroke-linecap="round"/>`;
+                accessory = `<text x="34" y="16" font-size="10">💦</text>`;
+            } else if (percent > 80) {
+                // Close to budget - Worried
+                mouthPath = "M 22 27 L 28 27";
+                eyeLeft = `<circle cx="18" cy="20" r="2" fill="#334155"/>`;
+                eyeRight = `<circle cx="32" cy="20" r="2" fill="#334155"/>`;
+                accessory = `<text x="34" y="16" font-size="10">💧</text>`;
+            } else if (percent < 50) {
+                // Super happy
+                mouthPath = "M 21 25 Q 25 30 29 25";
+            }
+
+            return `
+                <svg width="60" height="60" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Ears -->
+                    <circle cx="12" cy="12" r="7" fill="#fca5a5"/>
+                    <circle cx="12" cy="12" r="4" fill="#fecdd3"/>
+                    <circle cx="38" cy="12" r="7" fill="#fca5a5"/>
+                    <circle cx="38" cy="12" r="4" fill="#fecdd3"/>
+
+                    <!-- Body & Head -->
+                    <ellipse cx="25" cy="28" rx="19" ry="17" fill="#fde047"/>
+                    <ellipse cx="25" cy="30" rx="14" ry="12" fill="#fffdfa"/>
+
+                    <!-- Eyes -->
+                    ${eyeLeft}
+                    ${eyeRight}
+
+                    <!-- Cheeks -->
+                    <circle cx="14" cy="24" r="3.5" fill="${cheeks}" opacity="0.6"/>
+                    <circle cx="36" cy="24" r="3.5" fill="${cheeks}" opacity="0.6"/>
+
+                    <!-- Nose & Mouth -->
+                    <polygon points="25,23 23,21 27,21" fill="#f43f5e"/>
+                    <path d="${mouthPath}" stroke="#334155" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+
+                    <!-- Accessory -->
+                    ${accessory}
+                </svg>
+            `;
+        }
+
+        function renderDashboardPage() {
+            const currentYearMonth = state.currentMonth;
+            const monthExpenses = state.expenses.filter(e => e.date.startsWith(currentYearMonth));
+            const totalSpent = monthExpenses.reduce((sum, e) => sum + parseInt(e.amount || 0), 0);
+            const remaining = state.monthlyBudget - totalSpent;
+            const percent = Math.round((totalSpent / (state.monthlyBudget || 1)) * 100);
+
+            // Update Header Card Text
+            document.getElementById('disp-monthly-budget').textContent = state.monthlyBudget.toLocaleString();
+            document.getElementById('disp-total-spent').textContent = `¥${totalSpent.toLocaleString()}`;
+            document.getElementById('disp-remaining-balance').textContent = `¥${remaining.toLocaleString()}`;
+            document.getElementById('disp-spent-percentage').textContent = `${percent}% 使用`;
+            document.getElementById('disp-current-savings-mini').textContent = state.savingsBalance.toLocaleString();
+
+            const progressBar = document.getElementById('budget-progress-bar');
+            progressBar.style.width = `${Math.min(percent, 100)}%`;
+
+            // Update Hamster SVG & Speech
+            const hamsterContainer = document.getElementById('hamster-svg-container');
+            const speechText = document.getElementById('hamster-speech-text');
+
+            hamsterContainer.innerHTML = getHamsterSVG(percent);
+
+            if (percent > 100) {
+                speechText.textContent = `「大変だハム〜〜！！予算を ${Math.abs(remaining).toLocaleString()}円 オーバーしちゃったハム💦節約モード突入だハム！」`;
+            } else if (percent >= 80) {
+                speechText.textContent = `「もうすぐ予算がいっぱいだハム！あともうちょっと気を引き締めるハム〜！」`;
+            } else if (percent >= 50) {
+                speechText.textContent = `「折り返し地点だハム！この調子で計画的にお金を使っていこうね♪」`;
+            } else {
+                speechText.textContent = `「まだまだ余裕だハム！ひまわりの種も買えちゃうかも♪（残り ¥${remaining.toLocaleString()}）」`;
+            }
+
+            // Render Expense List
+            const listContainer = document.getElementById('expense-list-container');
+            document.getElementById('disp-expense-count').textContent = `${monthExpenses.length}件`;
+
+            if (monthExpenses.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="text-center py-10 text-slate-400 font-bold text-xs space-y-1">
+                        <p class="text-xl">📝</p>
+                        <p>今月の支出メモはまだありません</p>
+                    </div>
+                `;
+            } else {
+                monthExpenses.sort((a,b) => new Date(b.date) - new Date(a.date));
+                listContainer.innerHTML = monthExpenses.map(item => {
+                    const payIcon = item.paymentMethod === 'paypay' ? '📱' : item.paymentMethod === 'credit' ? '💳' : item.paymentMethod === 'cash' ? '💴' : '🌀';
+                    const categoryLabel = item.category === 'food' ? '食品' : item.category === 'daily' ? '日用品' : 'その他';
+
+                    return `
+                        <div class="p-3 bg-slate-50/80 hover:bg-pink-50/50 rounded-2xl border border-slate-100 flex items-center justify-between transition-colors">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-10 rounded-full" style="background-color: ${item.color || '#f472b6'};"></div>
+                                <div>
+                                    <div class="font-bold text-xs text-slate-800 flex items-center space-x-1.5">
+                                        <span>${escapeHTML(item.title || '支出メモ')}</span>
+                                        <span class="text-[9px] bg-slate-200/70 text-slate-600 px-1.5 py-0.2 rounded">${categoryLabel}</span>
+                                    </div>
+                                    <div class="text-[10px] text-slate-400 font-bold flex items-center space-x-2 mt-0.5">
+                                        <span>${item.date}</span>
+                                        <span>${payIcon}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3">
+                                <span class="font-black text-sm text-slate-800">¥${parseInt(item.amount).toLocaleString()}</span>
+                                <button onclick="handleDeleteExpense('${item.id}')" class="text-slate-300 hover:text-rose-400 p-1">
+                                    <i class="fa-solid fa-trash-can text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Render Additional Analytics (Category Comparison, Food Lowest Price, Payment Methods)
+            renderCategoryComparison(monthExpenses);
+            renderLowestFoodPrices();
+            renderPaymentMethodAnalysis(monthExpenses);
+        }
+
+        // 1. カテゴリー振り分け比較レンダリング
+        function renderCategoryComparison(expenses) {
+            const container = document.getElementById('category-comparison-box');
+            let foodTotal = 0, dailyTotal = 0, otherTotal = 0;
+
+            expenses.forEach(e => {
+                const amt = parseInt(e.amount || 0);
+                if (e.category === 'food') foodTotal += amt;
+                else if (e.category === 'daily') dailyTotal += amt;
+                else otherTotal += amt;
+            });
+
+            const grandTotal = foodTotal + dailyTotal + otherTotal || 1;
+            const foodPct = Math.round((foodTotal / grandTotal) * 100);
+            const dailyPct = Math.round((dailyTotal / grandTotal) * 100);
+            const otherPct = Math.round((otherTotal / grandTotal) * 100);
+
+            // Determine highest category
+            let topCategory = 'なし';
+            if (foodTotal >= dailyTotal && foodTotal >= otherTotal && foodTotal > 0) topCategory = '食品';
+            else if (dailyTotal >= foodTotal && dailyTotal >= otherTotal && dailyTotal > 0) topCategory = '日用品';
+            else if (otherTotal > 0) topCategory = 'その他';
+
+            container.innerHTML = `
+                <div class="bg-pink-50/60 p-2.5 rounded-xl border border-pink-100 text-center mb-2">
+                    <span class="text-[10px] text-pink-500 font-bold">今月一番買っているのは</span>
+                    <div class="text-xs font-black text-pink-600 mt-0.5">👑 ${topCategory}！</div>
+                </div>
+
+                <div class="space-y-2 text-xs font-bold">
+                    <div>
+                        <div class="flex justify-between text-[11px] mb-0.5">
+                            <span class="text-slate-700">🍎 食品</span>
+                            <span class="text-slate-500">¥${foodTotal.toLocaleString()} (${foodPct}%)</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-rose-400 rounded-full" style="width: ${foodPct}%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-[11px] mb-0.5">
+                            <span class="text-slate-700">🧴 日用品</span>
+                            <span class="text-slate-500">¥${dailyTotal.toLocaleString()} (${dailyPct}%)</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-emerald-400 rounded-full" style="width: ${dailyPct}%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-[11px] mb-0.5">
+                            <span class="text-slate-700">✨ その他</span>
+                            <span class="text-slate-500">¥${otherTotal.toLocaleString()} (${otherPct}%)</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-sky-400 rounded-full" style="width: ${otherPct}%"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 2. 食品最安値比較機能 (全履歴からの食品アイテム比較)
+        function renderLowestFoodPrices() {
+            const container = document.getElementById('lowest-food-price-box');
+            
+            // All food category items
+            const foodItems = state.expenses.filter(e => e.category === 'food' && e.title && e.title.trim() !== '');
+
+            if (foodItems.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-6 text-slate-400 font-bold text-xs">
+                        食品の記録が増えると最安月が表示されます♪
+                    </div>
+                `;
+                return;
+            }
+
+            // Group by item title
+            const grouped = {};
+            foodItems.forEach(item => {
+                const title = item.title.trim();
+                if (!grouped[title]) grouped[title] = [];
+                grouped[title].push(item);
+            });
+
+            // Find lowest price month for each item group
+            const results = [];
+            Object.keys(grouped).forEach(title => {
+                const list = grouped[title];
+                list.sort((a,b) => parseInt(a.amount) - parseInt(b.amount));
+                const lowest = list[0]; // Cheapest entry
+                results.push({
+                    title: title,
+                    lowestAmount: parseInt(lowest.amount),
+                    lowestDate: lowest.date,
+                    monthLabel: lowest.date.slice(0, 7)
+                });
+            });
+
+            // Sort results by lowest amount ascending and pick Top 3
+            results.sort((a,b) => a.lowestAmount - b.lowestAmount);
+            const top3 = results.slice(0, 3);
+
+            container.innerHTML = top3.map((res, idx) => `
+                <div class="p-2.5 bg-amber-50/50 rounded-xl border border-amber-100/80 flex items-center justify-between">
+                    <div>
+                        <div class="font-extrabold text-xs text-slate-800 flex items-center space-x-1">
+                            <span class="text-amber-500 font-black">#${idx + 1}</span>
+                            <span class="truncate max-w-[110px]">${escapeHTML(res.title)}</span>
+                        </div>
+                        <div class="text-[9px] text-amber-700 font-bold">最安月: ${res.monthLabel}</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs font-black text-amber-800">¥${res.lowestAmount.toLocaleString()}</div>
+                        <div class="text-[9px] text-slate-400">で一番安く買えた！</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 3. 支払い方法比率分析
+        function renderPaymentMethodAnalysis(expenses) {
+            const container = document.getElementById('payment-method-box');
+            let paypay = 0, credit = 0, cash = 0, other = 0;
+
+            expenses.forEach(e => {
+                const amt = parseInt(e.amount || 0);
+                if (e.paymentMethod === 'paypay') paypay += amt;
+                else if (e.paymentMethod === 'credit') credit += amt;
+                else if (e.paymentMethod === 'cash') cash += amt;
+                else other += amt;
+            });
+
+            const total = paypay + credit + cash + other || 1;
+
+            container.innerHTML = `
+                <div class="space-y-2 text-xs font-bold">
+                    <div class="flex items-center justify-between bg-slate-50 p-2 rounded-xl">
+                        <span class="flex items-center space-x-1">
+                            <span>📱</span>
+                            <span class="text-slate-700">PayPay</span>
+                        </span>
+                        <span class="font-black text-slate-800">¥${paypay.toLocaleString()} (${Math.round(paypay/total*100)}%)</span>
+                    </div>
+
+                    <div class="flex items-center justify-between bg-slate-50 p-2 rounded-xl">
+                        <span class="flex items-center space-x-1">
+                            <span>💳</span>
+                            <span class="text-slate-700">クレジット</span>
+                        </span>
+                        <span class="font-black text-slate-800">¥${credit.toLocaleString()} (${Math.round(credit/total*100)}%)</span>
+                    </div>
+
+                    <div class="flex items-center justify-between bg-slate-50 p-2 rounded-xl">
+                        <span class="flex items-center space-x-1">
+                            <span>💴</span>
+                            <span class="text-slate-700">現金</span>
+                        </span>
+                        <span class="font-black text-slate-800">¥${cash.toLocaleString()} (${Math.round(cash/total*100)}%)</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleAddExpense() {
+            const amount = document.getElementById('input-exp-amount').value;
+            const title = document.getElementById('input-exp-title').value;
+            const date = document.getElementById('input-exp-date').value;
+            const category = document.getElementById('input-exp-category').value;
+            const paymentMethod = document.getElementById('input-exp-payment').value;
+            
+            const colorEl = document.querySelector('input[name="exp-color"]:checked');
+            const color = colorEl ? colorEl.value : '#f472b6';
+
+            if (!amount) return;
+
+            const newExpense = {
+                id: 'exp-' + Date.now(),
+                amount: parseInt(amount),
+                title: title.trim(),
+                date: date,
+                category: category,
+                paymentMethod: paymentMethod,
+                color: color
+            };
+
+            state.expenses.push(newExpense);
+            
+            // Deduct from savings balance simultaneously
+            state.savingsBalance = Math.max(0, state.savingsBalance - parseInt(amount));
+
+            saveStateToStorage();
+
+            document.getElementById('input-exp-amount').value = '';
+            document.getElementById('input-exp-title').value = '';
+
+            renderAll();
+        }
+
+        function handleDeleteExpense(id) {
+            state.expenses = state.expenses.filter(e => e.id !== id);
+            saveStateToStorage();
+            renderAll();
+        }
+
+        function renderSalaryPage() {
+            const currentYear = state.currentMonth.split('-')[0];
+            document.getElementById('disp-salary-year-label').textContent = `${currentYear}年`;
+
+            const yearSalaries = state.salaries.filter(s => s.month.startsWith(currentYear));
+            const totalEarned = yearSalaries.reduce((sum, s) => sum + parseInt(s.amount || 0), 0);
+            const limit = state.dependentLimit;
+            const remaining = limit - totalEarned;
+            const percent = Math.min(Math.round((totalEarned / limit) * 100), 100);
+
+            // Compute remaining months allowance
+            const currentMonthNum = parseInt(state.currentMonth.split('-')[1]);
+            const remainingMonths = Math.max(1, 12 - currentMonthNum + 1);
+            const monthlyAllowance = remaining > 0 ? Math.floor(remaining / remainingMonths) : 0;
+
+            document.getElementById('disp-salary-earned-total').textContent = `¥${totalEarned.toLocaleString()}`;
+            document.getElementById('disp-dependent-remaining').textContent = remaining >= 0
+                ? `あと ¥${remaining.toLocaleString()}`
+                : `上限オーバー ¥${Math.abs(remaining).toLocaleString()}`;
+
+            document.getElementById('disp-salary-monthly-allowance').textContent = `¥${monthlyAllowance.toLocaleString()}/月`;
+            document.getElementById('disp-salary-percentage').textContent = `${percent}%`;
+
+            document.getElementById('salary-progress-bar').style.width = `${percent}%`;
+
+            // List Render
+            const listContainer = document.getElementById('salary-list-container');
+            document.getElementById('disp-salary-count').textContent = `${yearSalaries.length}件`;
+
+            if (yearSalaries.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="text-center py-10 text-slate-400 font-bold text-xs space-y-1">
+                        <p class="text-xl">💰</p>
+                        <p>今年の給料記録はまだありません</p>
+                    </div>
+                `;
+            } else {
+                yearSalaries.sort((a,b) => b.month.localeCompare(a.month));
+                listContainer.innerHTML = yearSalaries.map(s => `
+                    <div class="p-3 bg-emerald-50/60 rounded-2xl border border-emerald-100 flex items-center justify-between">
+                        <div>
+                            <div class="font-extrabold text-xs text-slate-800">${s.month}分 - ${escapeHTML(s.workplace || 'バイト給料')}</div>
+                            <div class="text-[10px] text-emerald-600 font-bold">手取り額</div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="font-black text-sm text-emerald-700">¥${parseInt(s.amount).toLocaleString()}</span>
+                            <button onclick="handleDeleteSalary('${s.id}')" class="text-slate-300 hover:text-rose-400 p-1">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function updateDependentLimitSetting() {
+            const val = document.getElementById('select-dependent-limit').value;
+            if (val === 'custom') {
+                const customVal = prompt('希望の扶養上限額を入力してください（例: 1300000）', '1300000');
+                if (customVal && !isNaN(customVal)) {
+                    state.dependentLimit = parseInt(customVal);
+                }
+            } else {
+                state.dependentLimit = parseInt(val);
+            }
+            saveStateToStorage();
+            renderSalaryPage();
+        }
+
+        function handleAddSalary() {
+            const month = document.getElementById('input-salary-month').value;
+            const amount = document.getElementById('input-salary-amount').value;
+            const workplace = document.getElementById('input-salary-workplace').value;
+
+            if (!month || !amount) return;
+
+            const newSalary = {
+                id: 'sal-' + Date.now(),
+                month: month,
+                amount: parseInt(amount),
+                workplace: workplace.trim()
+            };
+
+            state.salaries.push(newSalary);
+            saveStateToStorage();
+
+            document.getElementById('input-salary-amount').value = '';
+            document.getElementById('input-salary-workplace').value = '';
+
+            renderSalaryPage();
+        }
+
+        function handleDeleteSalary(id) {
+            state.salaries = state.salaries.filter(s => s.id !== id);
+            saveStateToStorage();
+            renderSalaryPage();
+        }
+
+        function renderCalendarPage() {
+            const yearMonth = state.currentMonth;
+            const [year, month] = yearMonth.split('-').map(Number);
+
+            document.getElementById('disp-calendar-title').textContent = `${year}年 ${month}月`;
+
+            const firstDayIndex = new Date(year, month - 1, 1).getDay();
+            const totalDays = new Date(year, month, 0).getDate();
+
+            const grid = document.getElementById('calendar-days-grid');
+            grid.innerHTML = '';
+
+            // Blank prefix cells
+            for (let i = 0; i < firstDayIndex; i++) {
+                grid.innerHTML += `<div class="h-14 sm:h-16 bg-slate-50/50 rounded-2xl"></div>`;
+            }
+
+            // Days cells
+            for (let day = 1; day <= totalDays; day++) {
+                const dateStr = `${yearMonth}-${String(day).padStart(2, '0')}`;
+                
+                // Day Total Expense
+                const dayExp = state.expenses.filter(e => e.date === dateStr);
+                const dayExpTotal = dayExp.reduce((sum, e) => sum + parseInt(e.amount), 0);
+
+                // Day Events
+                const dayEvents = state.events.filter(e => e.date === dateStr);
+
+                let eventBadge = '';
+                if (dayEvents.length > 0) {
+                    eventBadge = `<div class="text-[8px] sm:text-[9px] bg-pink-100 text-pink-700 px-1 rounded font-bold truncate">${escapeHTML(dayEvents[0].title)}</div>`;
+                }
+
+                let expenseBadge = '';
+                if (dayExpTotal > 0) {
+                    expenseBadge = `<div class="text-[8px] sm:text-[9px] bg-teal-100 text-teal-800 px-1 rounded font-extrabold">¥${dayExpTotal.toLocaleString()}</div>`;
+                }
+
+                grid.innerHTML += `
+                    <div onclick="selectCalendarDate('${dateStr}')" class="h-14 sm:h-16 bg-white p-1 rounded-2xl border border-slate-100 hover:border-pink-300 cursor-pointer flex flex-col justify-between transition-all">
+                        <div class="text-left font-bold text-xs text-slate-700">${day}</div>
+                        <div class="space-y-0.5 overflow-hidden">
+                            ${eventBadge}
+                            ${expenseBadge}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Render Event Sidebar
+            const eventContainer = document.getElementById('event-list-container');
+            const monthEvents = state.events.filter(e => e.date.startsWith(yearMonth));
+
+            if (monthEvents.length === 0) {
+                eventContainer.innerHTML = `
+                    <div class="text-center py-10 text-slate-400 font-bold text-xs space-y-1">
+                        <p class="text-xl">🎂</p>
+                        <p>今月のイベント予定はありません</p>
+                    </div>
+                `;
+            } else {
+                monthEvents.sort((a,b) => a.date.localeCompare(b.date));
+                eventContainer.innerHTML = monthEvents.map(evt => `
+                    <div class="p-3 bg-pink-50/70 rounded-2xl border border-pink-100 space-y-1">
+                        <div class="flex items-center justify-between">
+                            <span class="font-black text-xs text-slate-800">${escapeHTML(evt.title)}</span>
+                            <button onclick="handleDeleteEvent('${evt.id}')" class="text-slate-300 hover:text-rose-400">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] text-pink-600 font-bold">
+                            <span>📅 ${evt.date}</span>
+                            ${evt.budget ? `<span>予想支出: ¥${parseInt(evt.budget).toLocaleString()}</span>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function selectCalendarDate(dateStr) {
+            document.getElementById('input-exp-date').value = dateStr;
+            switchPage('page-1');
+        }
+
+        function handleAddEvent() {
+            const title = document.getElementById('input-event-title').value;
+            const date = document.getElementById('input-event-date').value;
+            const budget = document.getElementById('input-event-budget').value;
+
+            if (!title || !date) return;
+
+            state.events.push({
+                id: 'evt-' + Date.now(),
+                title: title.trim(),
+                date: date,
+                budget: budget ? parseInt(budget) : null
+            });
+
+            saveStateToStorage();
+            closeModal('modal-add-event');
+            renderCalendarPage();
+        }
+
+        function handleDeleteEvent(id) {
+            state.events = state.events.filter(e => e.id !== id);
+            saveStateToStorage();
+            renderCalendarPage();
+        }
+
+        function renderWishlistPage() {
+            const monthExpenses = state.expenses.filter(e => e.date.startsWith(state.currentMonth));
+            const totalSpent = monthExpenses.reduce((sum, e) => sum + parseInt(e.amount || 0), 0);
+            const remainingBudget = state.monthlyBudget - totalSpent;
+
+            document.getElementById('disp-wishlist-balance').textContent = remainingBudget.toLocaleString();
+
+            const container = document.getElementById('wishlist-container');
+
+            if (state.wishlist.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-10 text-slate-400 font-bold text-xs space-y-1">
+                        <p class="text-xl">🎁</p>
+                        <p>買いたいものリストは空です</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = state.wishlist.map(item => {
+                const canAfford = remainingBudget >= item.price;
+                const statusBadge = canAfford
+                    ? `<span class="bg-emerald-100 text-emerald-700 text-[10px] font-black px-2 py-0.5 rounded-full">✨ 今月買える！</span>`
+                    : `<span class="bg-rose-100 text-rose-600 text-[10px] font-black px-2 py-0.5 rounded-full">⚠️ あと ¥${(item.price - remainingBudget).toLocaleString()}</span>`;
+
+                const priorityLabel = item.priority === 'must' ? '🔥 必ず買う' : item.priority === 'if_possible' ? '✨ 余裕があれば' : '💭 そのうち';
+
+                return `
+                    <div class="p-4 bg-slate-50/80 rounded-2xl border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-2">
+                                <span class="font-extrabold text-sm text-slate-800">${escapeHTML(item.name)}</span>
+                                ${statusBadge}
+                            </div>
+                            <div class="text-xs text-slate-400 font-bold">
+                                優先度: ${priorityLabel} | 価格: <span class="text-slate-800 font-black">¥${parseInt(item.price).toLocaleString()}</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-2 justify-end">
+                            <button onclick="handleBuyWishItem('${item.id}')" class="px-3 py-1.5 bg-gradient-to-r from-pink-400 to-purple-400 hover:from-pink-500 hover:to-purple-500 text-white font-black text-xs rounded-xl shadow-sm transition-all flex items-center space-x-1">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span>買った！</span>
+                            </button>
+                            <button onclick="handleDeleteWishItem('${item.id}')" class="text-slate-300 hover:text-rose-400 p-1">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function handleAddWishItem() {
+            const name = document.getElementById('input-wish-name').value;
+            const price = document.getElementById('input-wish-price').value;
+            const priority = document.getElementById('input-wish-priority').value;
+
+            if (!name || !price) return;
+
+            state.wishlist.push({
+                id: 'wish-' + Date.now(),
+                name: name.trim(),
+                price: parseInt(price),
+                priority: priority
+            });
+
+            saveStateToStorage();
+
+            document.getElementById('input-wish-name').value = '';
+            document.getElementById('input-wish-price').value = '';
+
+            renderWishlistPage();
+        }
+
+        function handleBuyWishItem(id) {
+            const item = state.wishlist.find(w => w.id === id);
+            if (!item) return;
+
+            // Automatically register as expense for current day
+            state.expenses.push({
+                id: 'exp-' + Date.now(),
+                amount: item.price,
+                title: `[買いたい物] ${item.name}`,
+                date: new Date().toISOString().slice(0, 10),
+                category: 'other',
+                paymentMethod: 'paypay',
+                color: '#c084fc'
+            });
+
+            // Remove from wishlist
+            state.wishlist = state.wishlist.filter(w => w.id !== id);
+
+            saveStateToStorage();
+            renderAll();
+        }
+
+        function handleDeleteWishItem(id) {
+            state.wishlist = state.wishlist.filter(w => w.id !== id);
+            saveStateToStorage();
+            renderWishlistPage();
+        }
+
+        function renderGoalPage() {
+            const g = state.goal;
+            document.getElementById('disp-goal-title').textContent = g.title;
+            document.getElementById('disp-goal-target-amount').textContent = `¥${g.targetAmount.toLocaleString()}`;
+            document.getElementById('disp-goal-current-saved').textContent = `¥${g.currentSaved.toLocaleString()}`;
+
+            const remaining = Math.max(0, g.targetAmount - g.currentSaved);
+            document.getElementById('disp-goal-remaining-amount').textContent = `あと ¥${remaining.toLocaleString()}`;
+
+            // Calculate months left
+            const today = new Date();
+            const targetDate = new Date(g.targetMonth + '-01');
+            const monthsLeft = Math.max(1, (targetDate.getFullYear() - today.getFullYear()) * 12 + (targetDate.getMonth() - today.getMonth()));
+
+            const monthlyNeeded = Math.ceil(remaining / monthsLeft);
+
+            const [ty, tm] = g.targetMonth.split('-');
+            document.getElementById('disp-goal-target-month').textContent = `${ty}年${parseInt(tm)}月`;
+            document.getElementById('disp-goal-months-left').textContent = monthsLeft;
+            document.getElementById('disp-goal-monthly-needed').textContent = `月々 約 ¥${monthlyNeeded.toLocaleString()}`;
+
+            const percent = Math.min(100, Math.round((g.currentSaved / (g.targetAmount || 1)) * 100));
+            document.getElementById('disp-goal-progress-percent').textContent = `${percent}% 達成`;
+            document.getElementById('goal-progress-bar').style.width = `${percent}%`;
+        }
+
+        function handleSaveGoal() {
+            const title = document.getElementById('input-goal-title').value;
+            const target = document.getElementById('input-goal-target').value;
+            const saved = document.getElementById('input-goal-saved').value;
+            const month = document.getElementById('input-goal-month').value;
+
+            if (!title || !target || !saved || !month) return;
+
+            state.goal = {
+                title: title.trim(),
+                targetAmount: parseInt(target),
+                currentSaved: parseInt(saved),
+                targetMonth: month
+            };
+
+            saveStateToStorage();
+            closeModal('modal-edit-goal');
+            renderGoalPage();
+        }
+
+        function saveSettingsModal() {
+            const budgetVal = document.getElementById('setting-monthly-budget').value;
+            const savingsVal = document.getElementById('setting-savings-balance').value;
+
+            if (budgetVal && !isNaN(budgetVal)) {
+                state.monthlyBudget = parseInt(budgetVal);
+            }
+            if (savingsVal && !isNaN(savingsVal)) {
+                state.savingsBalance = parseInt(savingsVal);
+            }
+
+            saveStateToStorage();
+            closeModal('modal-settings');
+            renderAll();
+        }
+
+        function resetAllData() {
+            if (window.confirm && window.confirm('本当にすべてのデータを初期化しますか？')) {
+                state = { ...INITIAL_SAMPLE_DATA, currentMonth: new Date().toISOString().slice(0, 7) };
+                saveStateToStorage();
+                renderAll();
+                closeModal('modal-settings');
+            }
+        }
+
+        function escapeHTML(str) {
+            if (!str) return '';
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+    </script>
+
+</body></html>
